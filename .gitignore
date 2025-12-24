@@ -4,7 +4,7 @@
 
 # Dhiva Poject 
 # app/config/Database.php
-app/config/Keys.php
+# app/config/Keys.php
 # OS X
 .DS_Store
 .AppleDouble
