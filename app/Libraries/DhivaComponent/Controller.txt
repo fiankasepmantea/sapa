@@ -1,0 +1,13 @@
+<?php
+
+namespace App\Controllers;
+
+/**
+* Model Load
+* $this->model->{{tabel}};
+*/
+
+class {{controller}}Controller extends BaseController
+{
+    protected $table = '{{tabel}}';
+}

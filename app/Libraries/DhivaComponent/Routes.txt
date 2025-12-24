@@ -1,0 +1,1 @@
+DhivaRoutes::Route($routes, '{{routes}}', '{{controller}}Controller');

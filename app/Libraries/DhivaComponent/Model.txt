@@ -1,0 +1,8 @@
+<?php
+
+namespace App\Models\SqlModel;
+
+class {{model}}ModelSql extends BaseModelSql
+{
+    protected $table = '{{tabel}}';
+}
