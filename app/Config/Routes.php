@@ -9,6 +9,8 @@ $routes->get('sukses/(:segment)', 'DevController::sukses/$1');
 $routes->post('auth', 'SuperUserController::auth');
 $routes->get('logout', 'SuperUserController::logout');
 
+$routes->post('application/update-status', 'ApplicationController::updateStatus');
+
 DhivaRoutes::Route($routes, 'super-user', 'SuperUserController');
 DhivaRoutes::Route($routes, 'group', 'SuperUserGroupController');
 DhivaRoutes::Route($routes, 'endpoint', 'EndpointController');
@@ -17,3 +19,5 @@ DhivaRoutes::Route($routes, 'tool', 'ToolController');
 DhivaRoutes::Route($routes, 'unit', 'UnitController');
 DhivaRoutes::Route($routes, 'status', 'StatusController');
 DhivaRoutes::Route($routes, 'application', 'ApplicationController');
+
+
