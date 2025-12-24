@@ -3,7 +3,7 @@
 #-------------------------
 
 # Dhiva Poject 
-app/config/Database.php
+# app/config/Database.php
 app/config/Keys.php
 # OS X
 .DS_Store
