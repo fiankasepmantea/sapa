@@ -1,0 +1,3252 @@
+{
+	"info": {
+		"_postman_id": "9b50a542-5fdd-4223-be17-671c84c4ed01",
+		"name": "API TEST-ALFIAN",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11064668",
+		"_collection_link": "https://martian-crater-155903.postman.co/workspace/Team-Workspace~ea2083eb-5ffe-4043-80be-bd3802cb13ec/collection/11064668-9b50a542-5fdd-4223-be17-671c84c4ed01?action=share&source=collection_link&creator=11064668"
+	},
+	"item": [
+		{
+			"name": "AUTH",
+			"item": [
+				{
+					"name": "AUTH",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseBodys = pm.response.json();\r",
+									"pm.test(JSON.stringify(responseBodys), function () {\r",
+									"    const Authorization = responseBodys.message.Authorization;\r",
+									"    const ClientSecret = responseBodys.message.ClientSecret;\r",
+									"    if (ClientSecret && Authorization) {\r",
+									"        pm.environment.set('Authorization', Authorization);\r",
+									"        pm.environment.set('ClientSecret', ClientSecret);\r",
+									"        pm.response.to.have.status(200);\r",
+									"    }\r",
+									"    else{\r",
+									"        pm.response.to.have.status(404);\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "superadmin",
+									"description": "kemenkopolhukam",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "superadmin",
+									"description": "kemenkopolhukam",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}auth",
+							"host": [
+								"{{base_url}}auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET FOTO",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{base_url}}getfoto",
+							"host": [
+								"{{base_url}}getfoto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CEK TOKEN",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{base_url}}token",
+							"host": [
+								"{{base_url}}token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LOGOUT",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{base_url}}logout",
+							"host": [
+								"{{base_url}}logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ENDPOINT",
+			"item": [
+				{
+					"name": "GENERATE",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "value",
+									"value": "/student/",
+									"description": "ex: /update-password, /transaksi, /kegiatan",
+									"type": "text"
+								},
+								{
+									"key": "method",
+									"value": "GET",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}endpoencode",
+							"host": [
+								"{{base_url}}endpoencode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LIST",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{base_url}}endpoint",
+							"host": [
+								"{{base_url}}endpoint"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DECODE",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "endpoint",
+									"value": "eXME7l4sUAd05bl2iLOGMwt-0n-MTj-HTkXKL6NOjgvvZ4uOcV9tRjIYe5whSaybPP6B-pj-qhanGyLTL06pJzmVGAf1r0WmhpjpaK9GFII",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}endpodecode",
+							"host": [
+								"{{base_url}}endpodecode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MD5",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "endpoint",
+									"value": "J1PsSCOCbzHkno24D-Cmxg",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}peserta/all_by",
+							"host": [
+								"{{base_url}}peserta"
+							],
+							"path": [
+								"all_by"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "APP VERSION",
+			"item": [
+				{
+					"name": "CHECK",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "endpoint",
+									"value": "J1PsSCOCbzHkno24D-Cmxg",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}app-version",
+							"host": [
+								"{{base_url}}app-version"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "INSERT",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/D:/PRODEV/POLRI/kamtibmas-sleman-frontend/android/app/build/outputs/apk/debug/app-debug.apk"
+								},
+								{
+									"key": "version",
+									"value": "1.7",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}app-version",
+							"host": [
+								"{{base_url}}app-version"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DOWNLOAD",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{base_url}}app-version/show_by/version/2.0?token=4622869357cd56c116e6c9d0f24367b1",
+							"host": [
+								"{{base_url}}app-version"
+							],
+							"path": [
+								"show_by",
+								"version",
+								"2.0"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "4622869357cd56c116e6c9d0f24367b1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GROUP",
+			"item": [
+				{
+					"name": "FIND BY",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}group/show_by/super_group_id/3",
+							"host": [
+								"{{base_url}}group"
+							],
+							"path": [
+								"show_by",
+								"super_group_id",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "INSERT",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "group_name",
+									"value": "PENGENDALI",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/fiankasepman/OneDrive/Gambar/pengendali.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}super-group",
+							"host": [
+								"{{base_url}}super-group"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE AVATAR",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/fiankasepman/OneDrive/Gambar/captain_marvel.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}group/update/83",
+							"host": [
+								"{{base_url}}group"
+							],
+							"path": [
+								"update",
+								"83"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ALL",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}group",
+							"host": [
+								"{{base_url}}group"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}group/delete/88",
+							"host": [
+								"{{base_url}}group"
+							],
+							"path": [
+								"delete",
+								"88"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "USER",
+			"item": [
+				{
+					"name": "FIND BY",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}super-user/show_by/super_user_id/4cmGmCu5jqjP_F7ea4K4s_qQNr1XFfRwM79mDKVgJoc",
+							"host": [
+								"{{base_url}}super-user"
+							],
+							"path": [
+								"show_by",
+								"super_user_id",
+								"4cmGmCu5jqjP_F7ea4K4s_qQNr1XFfRwM79mDKVgJoc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "USER DATA",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}userdata",
+							"host": [
+								"{{base_url}}userdata"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "INSERT",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Didin",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "didin@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "didin",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/fiankasepman/OneDrive/Gambar/penilai external2.png",
+									"disabled": true
+								},
+								{
+									"key": "super_group_id",
+									"value": "2",
+									"description": "ex: 85=tni, 84=polri,",
+									"type": "text"
+								},
+								{
+									"key": "unit_id",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}super-user",
+							"host": [
+								"{{base_url}}super-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE SIGNATURE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseBodys = pm.response.json();\r",
+									"pm.test(JSON.stringify(responseBodys), function () {\r",
+									"    const Authorization = responseBodys.message.Authorization;\r",
+									"    const ClientSecret = responseBodys.message.ClientSecret;\r",
+									"    if (ClientSecret && Authorization) {\r",
+									"        pm.environment.set('Authorization', Authorization);\r",
+									"        pm.environment.set('ClientSecret', ClientSecret);\r",
+									"        pm.response.to.have.status(200);\r",
+									"    }\r",
+									"    else{\r",
+									"        pm.response.to.have.status(404);\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "signature_picture",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}update-signature",
+							"host": [
+								"{{base_url}}update-signature"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "IMPORT EXCEL",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseBodys = pm.response.json();\r",
+									"pm.test(JSON.stringify(responseBodys), function () {\r",
+									"    const Authorization = responseBodys.message.Authorization;\r",
+									"    const ClientSecret = responseBodys.message.ClientSecret;\r",
+									"    if (ClientSecret && Authorization) {\r",
+									"        pm.environment.set('Authorization', Authorization);\r",
+									"        pm.environment.set('ClientSecret', ClientSecret);\r",
+									"        pm.response.to.have.status(200);\r",
+									"    }\r",
+									"    else{\r",
+									"        pm.response.to.have.status(404);\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "excel_file",
+									"type": "file",
+									"src": "/C:/Users/fiankasepman/Downloads/Bookfull_updated.xlsx"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}import-user-excel",
+							"host": [
+								"{{base_url}}import-user-excel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE PASSWORD",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseBodys = pm.response.json();\r",
+									"pm.test(JSON.stringify(responseBodys), function () {\r",
+									"    const Authorization = responseBodys.message.Authorization;\r",
+									"    const ClientSecret = responseBodys.message.ClientSecret;\r",
+									"    if (ClientSecret && Authorization) {\r",
+									"        pm.environment.set('Authorization', Authorization);\r",
+									"        pm.environment.set('ClientSecret', ClientSecret);\r",
+									"        pm.response.to.have.status(200);\r",
+									"    }\r",
+									"    else{\r",
+									"        pm.response.to.have.status(404);\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "password",
+									"value": "tests",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}update-password",
+							"host": [
+								"{{base_url}}update-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE USER DATA",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseBodys = pm.response.json();\r",
+									"pm.test(JSON.stringify(responseBodys), function () {\r",
+									"    const Authorization = responseBodys.message.Authorization;\r",
+									"    const ClientSecret = responseBodys.message.ClientSecret;\r",
+									"    if (ClientSecret && Authorization) {\r",
+									"        pm.environment.set('Authorization', Authorization);\r",
+									"        pm.environment.set('ClientSecret', ClientSecret);\r",
+									"        pm.response.to.have.status(200);\r",
+									"    }\r",
+									"    else{\r",
+									"        pm.response.to.have.status(404);\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "no_wa",
+									"value": "089608864621",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}update-user-data",
+							"host": [
+								"{{base_url}}update-user-data"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}user/delete/l7OcDA-baDNL4iuZZVPAKLkoS-DHfpC3LTztEMyhgUA",
+							"host": [
+								"{{base_url}}user"
+							],
+							"path": [
+								"delete",
+								"l7OcDA-baDNL4iuZZVPAKLkoS-DHfpC3LTztEMyhgUA"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ALL",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}super-user",
+							"host": [
+								"{{base_url}}super-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PAGINATION",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}user/pages/5/1",
+							"host": [
+								"{{base_url}}user"
+							],
+							"path": [
+								"pages",
+								"5",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PAGINATION",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "from",
+									"value": "2023-11-10",
+									"description": "optional | Y-m-d format",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "to",
+									"value": "2023-11-20",
+									"description": "optional | Y-m-d format",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"description": "required",
+									"type": "text"
+								},
+								{
+									"key": "limit",
+									"value": "10",
+									"description": "required",
+									"type": "text"
+								},
+								{
+									"key": "groupby",
+									"value": "super_user_id",
+									"description": "optional",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "set",
+									"value": "ASLOG",
+									"description": "optional | where key required",
+									"type": "text"
+								},
+								{
+									"key": "where",
+									"value": "name",
+									"description": "optional ",
+									"type": "text"
+								},
+								{
+									"key": "orderby",
+									"value": "super_user_unique",
+									"description": "optional ",
+									"type": "text"
+								},
+								{
+									"key": "sort",
+									"value": "desc",
+									"description": "optional | orderby key required",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}user/pagination",
+							"host": [
+								"{{base_url}}user"
+							],
+							"path": [
+								"pagination"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SUB USER BY GROUP ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}sub-user/all_by/super_group_id/89",
+							"host": [
+								"{{base_url}}sub-user"
+							],
+							"path": [
+								"all_by",
+								"super_group_id",
+								"89"
+							],
+							"query": [
+								{
+									"key": null,
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET GROUP BY GROUP ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}user/group/show_by/super_group_id/7",
+							"host": [
+								"{{base_url}}user"
+							],
+							"path": [
+								"group",
+								"show_by",
+								"super_group_id",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET NO SERDIK",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "where",
+									"value": "no_serdik",
+									"type": "text"
+								},
+								{
+									"key": "set",
+									"value": "20240100100",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}get-no-serdik",
+							"host": [
+								"{{base_url}}get-no-serdik"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BASE CRUD",
+			"item": [
+				{
+					"name": "FIND BY",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}transaksi/show_by/transaksi_id/PncXaNIsKNk3Q4Tuo3teqhtElMlJETmChm-ah_tY7I4",
+							"host": [
+								"{{base_url}}transaksi"
+							],
+							"path": [
+								"show_by",
+								"transaksi_id",
+								"PncXaNIsKNk3Q4Tuo3teqhtElMlJETmChm-ah_tY7I4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}transaksi/delete/PncXaNIsKNk3Q4Tuo3teqhtElMlJETmChm-ah_tY7I4",
+							"host": [
+								"{{base_url}}transaksi"
+							],
+							"path": [
+								"delete",
+								"PncXaNIsKNk3Q4Tuo3teqhtElMlJETmChm-ah_tY7I4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "INSERT",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nama",
+									"value": "transaksi gelap",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}transaksi",
+							"host": [
+								"{{base_url}}transaksi"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nama",
+									"value": "Transaksi Keuangan Mahal",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}transaksi/update/tbx7uS9j26K9gRPO0NJ-VBIbRx5Mr39TbNFD7JLVx0E",
+							"host": [
+								"{{base_url}}transaksi"
+							],
+							"path": [
+								"update",
+								"tbx7uS9j26K9gRPO0NJ-VBIbRx5Mr39TbNFD7JLVx0E"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ALL",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}transaksi",
+							"host": [
+								"{{base_url}}transaksi"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PAGINATION",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "from",
+									"value": "2023-11-10",
+									"description": "optional | Y-m-d format",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "to",
+									"value": "2023-11-20",
+									"description": "optional | Y-m-d format",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"description": "required",
+									"type": "text"
+								},
+								{
+									"key": "limit",
+									"value": "10",
+									"description": "required",
+									"type": "text"
+								},
+								{
+									"key": "groupby",
+									"value": "kegiatan_id",
+									"description": "optional",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "set",
+									"value": "transaksi gelap",
+									"description": "optional | where key required",
+									"type": "text"
+								},
+								{
+									"key": "where",
+									"value": "nama",
+									"description": "optional ",
+									"type": "text"
+								},
+								{
+									"key": "orderby",
+									"value": "transaksi_unique",
+									"description": "optional ",
+									"type": "text"
+								},
+								{
+									"key": "sort",
+									"value": "desc",
+									"description": "optional | orderby key required",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}transaksi/pagination",
+							"host": [
+								"{{base_url}}transaksi"
+							],
+							"path": [
+								"pagination"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UNIT",
+			"item": [
+				{
+					"name": "FIND BY",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}unit/show_by/unit_id/dnavNM7suNjNrRxhlnNWdAVsMrgbQGrs57AYfi3O380",
+							"host": [
+								"{{base_url}}unit"
+							],
+							"path": [
+								"show_by",
+								"unit_id",
+								"dnavNM7suNjNrRxhlnNWdAVsMrgbQGrs57AYfi3O380"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "INSERT",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "unit_name",
+									"value": "warehouse",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}unit",
+							"host": [
+								"{{base_url}}unit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "subro combro",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}unit/update/dnavNM7suNjNrRxhlnNWdAVsMrgbQGrs57AYfi3O380",
+							"host": [
+								"{{base_url}}unit"
+							],
+							"path": [
+								"update",
+								"dnavNM7suNjNrRxhlnNWdAVsMrgbQGrs57AYfi3O380"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ALL",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}unit",
+							"host": [
+								"{{base_url}}unit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}unit/delete/PncXaNIsKNk3Q4Tuo3teqhtElMlJETmChm-ah_tY7I4",
+							"host": [
+								"{{base_url}}unit"
+							],
+							"path": [
+								"delete",
+								"PncXaNIsKNk3Q4Tuo3teqhtElMlJETmChm-ah_tY7I4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PAGINATION",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "from",
+									"value": "2023-11-10",
+									"description": "optional | Y-m-d format",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "to",
+									"value": "2023-11-20",
+									"description": "optional | Y-m-d format",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"description": "required",
+									"type": "text"
+								},
+								{
+									"key": "limit",
+									"value": "10",
+									"description": "required",
+									"type": "text"
+								},
+								{
+									"key": "groupby",
+									"value": "kegiatan_id",
+									"description": "optional",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "set",
+									"value": "transaksi gelap",
+									"description": "optional | where key required",
+									"type": "text"
+								},
+								{
+									"key": "where",
+									"value": "nama",
+									"description": "optional ",
+									"type": "text"
+								},
+								{
+									"key": "orderby",
+									"value": "transaksi_unique",
+									"description": "optional ",
+									"type": "text"
+								},
+								{
+									"key": "sort",
+									"value": "desc",
+									"description": "optional | orderby key required",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}unit/pagination",
+							"host": [
+								"{{base_url}}unit"
+							],
+							"path": [
+								"pagination"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "STATUS",
+			"item": [
+				{
+					"name": "FIND BY",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}status/show_by/status_id/dnavNM7suNjNrRxhlnNWdAVsMrgbQGrs57AYfi3O380",
+							"host": [
+								"{{base_url}}status"
+							],
+							"path": [
+								"show_by",
+								"status_id",
+								"dnavNM7suNjNrRxhlnNWdAVsMrgbQGrs57AYfi3O380"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "INSERT",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "laptop",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "7500.50",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}status",
+							"host": [
+								"{{base_url}}status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "subro combro",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}status/update/dnavNM7suNjNrRxhlnNWdAVsMrgbQGrs57AYfi3O380",
+							"host": [
+								"{{base_url}}status"
+							],
+							"path": [
+								"update",
+								"dnavNM7suNjNrRxhlnNWdAVsMrgbQGrs57AYfi3O380"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ALL",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}status",
+							"host": [
+								"{{base_url}}status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}status/delete/PncXaNIsKNk3Q4Tuo3teqhtElMlJETmChm-ah_tY7I4",
+							"host": [
+								"{{base_url}}status"
+							],
+							"path": [
+								"delete",
+								"PncXaNIsKNk3Q4Tuo3teqhtElMlJETmChm-ah_tY7I4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PAGINATION",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "from",
+									"value": "2023-11-10",
+									"description": "optional | Y-m-d format",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "to",
+									"value": "2023-11-20",
+									"description": "optional | Y-m-d format",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"description": "required",
+									"type": "text"
+								},
+								{
+									"key": "limit",
+									"value": "10",
+									"description": "required",
+									"type": "text"
+								},
+								{
+									"key": "groupby",
+									"value": "kegiatan_id",
+									"description": "optional",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "set",
+									"value": "transaksi gelap",
+									"description": "optional | where key required",
+									"type": "text"
+								},
+								{
+									"key": "where",
+									"value": "nama",
+									"description": "optional ",
+									"type": "text"
+								},
+								{
+									"key": "orderby",
+									"value": "transaksi_unique",
+									"description": "optional ",
+									"type": "text"
+								},
+								{
+									"key": "sort",
+									"value": "desc",
+									"description": "optional | orderby key required",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}status/pagination",
+							"host": [
+								"{{base_url}}status"
+							],
+							"path": [
+								"pagination"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TOOL",
+			"item": [
+				{
+					"name": "FIND BY",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}tool/show_by/tool_id/dnavNM7suNjNrRxhlnNWdAVsMrgbQGrs57AYfi3O380",
+							"host": [
+								"{{base_url}}tool"
+							],
+							"path": [
+								"show_by",
+								"tool_id",
+								"dnavNM7suNjNrRxhlnNWdAVsMrgbQGrs57AYfi3O380"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "INSERT",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "laptop",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "7500.50",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}tool",
+							"host": [
+								"{{base_url}}tool"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "subro combro",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}tool/update/dnavNM7suNjNrRxhlnNWdAVsMrgbQGrs57AYfi3O380",
+							"host": [
+								"{{base_url}}tool"
+							],
+							"path": [
+								"update",
+								"dnavNM7suNjNrRxhlnNWdAVsMrgbQGrs57AYfi3O380"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ALL",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}tool",
+							"host": [
+								"{{base_url}}tool"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}tool/delete/PncXaNIsKNk3Q4Tuo3teqhtElMlJETmChm-ah_tY7I4",
+							"host": [
+								"{{base_url}}tool"
+							],
+							"path": [
+								"delete",
+								"PncXaNIsKNk3Q4Tuo3teqhtElMlJETmChm-ah_tY7I4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PAGINATION",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "from",
+									"value": "2023-11-10",
+									"description": "optional | Y-m-d format",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "to",
+									"value": "2023-11-20",
+									"description": "optional | Y-m-d format",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"description": "required",
+									"type": "text"
+								},
+								{
+									"key": "limit",
+									"value": "10",
+									"description": "required",
+									"type": "text"
+								},
+								{
+									"key": "groupby",
+									"value": "kegiatan_id",
+									"description": "optional",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "set",
+									"value": "transaksi gelap",
+									"description": "optional | where key required",
+									"type": "text"
+								},
+								{
+									"key": "where",
+									"value": "nama",
+									"description": "optional ",
+									"type": "text"
+								},
+								{
+									"key": "orderby",
+									"value": "transaksi_unique",
+									"description": "optional ",
+									"type": "text"
+								},
+								{
+									"key": "sort",
+									"value": "desc",
+									"description": "optional | orderby key required",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}tool/pagination",
+							"host": [
+								"{{base_url}}tool"
+							],
+							"path": [
+								"pagination"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "APPLICATION/PENGAJUAN",
+			"item": [
+				{
+					"name": "FIND BY",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}application/show_by/application_id/dnavNM7suNjNrRxhlnNWdAVsMrgbQGrs57AYfi3O380",
+							"host": [
+								"{{base_url}}application"
+							],
+							"path": [
+								"show_by",
+								"application_id",
+								"dnavNM7suNjNrRxhlnNWdAVsMrgbQGrs57AYfi3O380"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "INSERT",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "description",
+									"value": "pintu rusak",
+									"type": "text"
+								},
+								{
+									"key": "tool_id",
+									"value": "1f0e072d-6498-6d3a-aa2c-00155d8d519e",
+									"type": "text"
+								},
+								{
+									"key": "status_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "super_user_id",
+									"value": "3b4qDSQnzgMD6PbpqB5AIFiaIpb5V96x8t5GQNNTV90",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}application",
+							"host": [
+								"{{base_url}}application"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "status_id",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}application/update/1f0e075b-8c3a-6e1e-bc69-00155d8d519e",
+							"host": [
+								"{{base_url}}application"
+							],
+							"path": [
+								"update",
+								"1f0e075b-8c3a-6e1e-bc69-00155d8d519e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ALL",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}application",
+							"host": [
+								"{{base_url}}application"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}application/delete/PncXaNIsKNk3Q4Tuo3teqhtElMlJETmChm-ah_tY7I4",
+							"host": [
+								"{{base_url}}application"
+							],
+							"path": [
+								"delete",
+								"PncXaNIsKNk3Q4Tuo3teqhtElMlJETmChm-ah_tY7I4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PAGINATION",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "from",
+									"value": "2023-11-10",
+									"description": "optional | Y-m-d format",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "to",
+									"value": "2023-11-20",
+									"description": "optional | Y-m-d format",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"description": "required",
+									"type": "text"
+								},
+								{
+									"key": "limit",
+									"value": "10",
+									"description": "required",
+									"type": "text"
+								},
+								{
+									"key": "groupby",
+									"value": "kegiatan_id",
+									"description": "optional",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "set",
+									"value": "transaksi gelap",
+									"description": "optional | where key required",
+									"type": "text"
+								},
+								{
+									"key": "where",
+									"value": "nama",
+									"description": "optional ",
+									"type": "text"
+								},
+								{
+									"key": "orderby",
+									"value": "transaksi_unique",
+									"description": "optional ",
+									"type": "text"
+								},
+								{
+									"key": "sort",
+									"value": "desc",
+									"description": "optional | orderby key required",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}application/pagination",
+							"host": [
+								"{{base_url}}application"
+							],
+							"path": [
+								"pagination"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "IMAGES",
+			"item": [
+				{
+					"name": "IMAGES",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}image/q2ucyKuOrmWujFe8XS5efOx1u9tYpBQOcfP5ern_3ADkI4HMURGRfET5389jjuE968IK1sKxwIw2oauyMG9KDA",
+							"host": [
+								"{{base_url}}image"
+							],
+							"path": [
+								"q2ucyKuOrmWujFe8XS5efOx1u9tYpBQOcfP5ern_3ADkI4HMURGRfET5389jjuE968IK1sKxwIw2oauyMG9KDA"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PDF",
+			"item": [
+				{
+					"name": "PDF",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}pdf/YEVK0muJBVXgiR7oYLst10KSkHziq9s7BGM80Y5YS4pBNgK3COo95gJO9pz7v3Y1VLdriKPYu5G1pDKvgy9gDg",
+							"host": [
+								"{{base_url}}pdf"
+							],
+							"path": [
+								"YEVK0muJBVXgiR7oYLst10KSkHziq9s7BGM80Y5YS4pBNgK3COo95gJO9pz7v3Y1VLdriKPYu5G1pDKvgy9gDg"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "APP",
+			"item": [
+				{
+					"name": "APK",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var parser = new DOMParser(),\r",
+									"  doc = parser.parseFromString(response.data, 'text/html');\r",
+									"if (doc) {\r",
+									"  var tag = doc.querySelectorAll(\".hAyfc .htlgb\");\r",
+									"  if (tag && tag[6]) {\r",
+									"    let storeVersion = tag[6].innerText.trim();\r",
+									"    console.log(storeVersion)\r",
+									"  }\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							},
+							{
+								"key": "ClientSecret",
+								"value": "{{ClientSecret}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://play.google.com/store/apps/details?id=kamtibmas.sleman&hl=en",
+							"protocol": "https",
+							"host": [
+								"play",
+								"google",
+								"com"
+							],
+							"path": [
+								"store",
+								"apps",
+								"details"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "kamtibmas.sleman"
+								},
+								{
+									"key": "hl",
+									"value": "en"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
