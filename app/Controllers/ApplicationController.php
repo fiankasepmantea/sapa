@@ -16,4 +16,5 @@ class ApplicationController extends BaseController
         $data = $this->model->{$this->table}->indexApplication();
         $this->response(GET, $data);
     }
+    
 }
